@@ -1,4 +1,4 @@
-import { Box, Paper, useTheme, Button, Icon, Divider } from "@mui/material"
+import { Box, Paper, useTheme, Button, Icon, Divider, Skeleton } from "@mui/material"
 
 interface IDetailToolsProps {
     textoBotaoNovo?: string,
@@ -7,6 +7,12 @@ interface IDetailToolsProps {
     mostrarBotaoApagar?: boolean,
     mostrarBotaoSalvar?: boolean,
     mostrarBotaoSalvarFechar?: boolean,
+
+    botaoNovoIsLoading?: boolean,
+    botaoVoltarIsLoading?: boolean,
+    botaoApagarIsLoading?: boolean,
+    botaoSalvarIsLoading?: boolean,
+    botaoSalvarFecharIsLoading?: boolean,
 
     handleClickNovo?: () => void,
     handleClickVoltar?: () => void,
@@ -23,6 +29,12 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
     mostrarBotaoApagar = true,
     mostrarBotaoSalvar = true,
     mostrarBotaoSalvarFechar = false,
+
+    botaoNovoIsLoading = false,
+    botaoVoltarIsLoading = false,
+    botaoApagarIsLoading = false,
+    botaoSalvarIsLoading = false,
+    botaoSalvarFecharIsLoading = false,
 
     handleClickNovo,
     handleClickVoltar,
@@ -44,7 +56,7 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
             height={theme.spacing(5)}
             component={Paper}
         >
-            { mostrarBotaoSalvar && (
+            { (mostrarBotaoSalvar && !botaoSalvarIsLoading) && (
                 <Button
                     color='primary'
                     startIcon={<Icon>save</Icon>}
@@ -56,7 +68,11 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
                 </Button>
             )}
 
-            { mostrarBotaoSalvarFechar && (
+            { botaoSalvarIsLoading && (
+                <Skeleton width={110} height={60}/>
+            )}
+
+            { (mostrarBotaoSalvarFechar && !botaoSalvarFecharIsLoading) && (
                 <Button
                     color='primary'
                     startIcon={<Icon>save</Icon>}
@@ -68,7 +84,11 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
                 </Button>
             )}
 
-            { mostrarBotaoApagar && (
+            { botaoSalvarFecharIsLoading && (
+                <Skeleton width={180} height={60}/>
+            )}
+
+            { (mostrarBotaoApagar && !botaoApagarIsLoading) && (
                 <Button
                     color='primary'
                     startIcon={<Icon>delete</Icon>}
@@ -80,7 +100,11 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
                 </Button>
             )}
 
-            { mostrarBotaoNovo && (
+            { botaoApagarIsLoading && (
+                <Skeleton width={110} height={60}/>
+            )}
+
+            { (mostrarBotaoNovo && !botaoNovoIsLoading) && (
                 <Button
                     color='primary'
                     startIcon={<Icon>add</Icon>}
@@ -92,9 +116,13 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
                 </Button>
             )}
 
+            { botaoNovoIsLoading && (
+                <Skeleton width={110} height={60}/>
+            )}
+
             <Divider variant='middle' orientation='vertical'/>
 
-            { mostrarBotaoVoltar && (
+            { (mostrarBotaoVoltar && !botaoVoltarIsLoading) && (
                 <Button
                     color='primary'
                     startIcon={<Icon>arrow_back</Icon>}
@@ -106,6 +134,9 @@ export const DetailTools: React.FC<IDetailToolsProps> = ({
                 </Button>
             )}
 
+            {botaoVoltarIsLoading && (
+              <Skeleton width={110} height={60}/>  
+            )}
         </Box>
     )
 }
