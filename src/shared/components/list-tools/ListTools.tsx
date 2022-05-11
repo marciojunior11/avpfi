@@ -1,5 +1,7 @@
 import { Box, Button, TextField, Paper, useTheme, InputAdornment, Icon } from "@mui/material"
 
+import { Environment } from "../../environment";
+
 interface IListTools {
     textoDaBusca?: string;
     mostrarInputBusca?: boolean;
@@ -37,7 +39,7 @@ export const ListTools: React.FC<IListTools> = ({
                     size='small'
                     value={textoDaBusca}
                     onChange={(e) => handleSeachTextChange?.(e.target.value)}
-                    placeholder='Pesquisar...'
+                    placeholder={Environment.INPUT_DE_BUSCA}
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position='start'>
