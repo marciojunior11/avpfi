@@ -13,7 +13,7 @@ export const ListagemDeCidades: React.FC = () => {
 
     return (
         <LayoutBase 
-            titulo="Listagem de Cidades"
+            titulo="Consulta de Cidades"
             barraDeFerramentas={
                 <ListTools
                     textoBotaoNovo="Nova"
