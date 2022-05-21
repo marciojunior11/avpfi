@@ -4,7 +4,7 @@ import { ListTools } from "../../shared/components";
 import { LayoutBase } from "../../shared/layouts";
 
 
-export const ConsultaCidades: React.FC = () => {
+export const ConsultaPaises: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const busca = useMemo(() => {
@@ -12,15 +12,14 @@ export const ConsultaCidades: React.FC = () => {
     }, [searchParams]);
 
     useEffect(() => {
-
+        
     }, [])
 
     return (
         <LayoutBase 
-            titulo="Consulta de Cidades"
+            titulo="Consulta de Paises"
             barraDeFerramentas={
                 <ListTools
-                    textoBotaoNovo="Nova"
                     mostrarInputBusca
                     textoDaBusca={busca}
                     handleSeachTextChange={texto => setSearchParams({ busca : texto }, { replace : true })}
