@@ -6,12 +6,11 @@ import { useDebounce } from "../../shared/hooks";
 import { LayoutBase } from "../../shared/layouts";
 import { ClientesServices, IClientes } from "../../shared/services/api/clientes/ClientesServices";
 
-
 export const ConsultaClientes: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const { debounce } = useDebounce();
 
-    const [clientes, setClientes] = useState<IClientes[]>();
+    const [clientes, setClientes] = useState<IClientes[]>([]);
     const [qtdClientes, setQtdClientes] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,22 +19,24 @@ export const ConsultaClientes: React.FC = () => {
     }, [searchParams]);
 
     useEffect(() => {
-        setIsLoading(true);
 
+        setIsLoading(true);     
         debounce(() => {
             ClientesServices.getAll(1, busca)
-            .then((result) => {
-                setIsLoading(false);
-
-                if (result instanceof Error) {
-                    alert(result.message)
-                } else {
+                .then((result) => {
                     console.log(result);
-                    setClientes(result.data);
-                    setQtdClientes(result.count);
-                }
-            });
+                    setIsLoading(false);        
+                    if (result instanceof Error) {
+                        alert(result.message)
+                    } else {
+                        console.log('DATA', result.data);
+                        setClientes(result.data.data);
+                        console.log('RESULT DATA DATA', result.data.data)
+                        setQtdClientes(result.count);
+                    }
+                });
         })
+        console.log('CLIENTES', clientes);
     }, [busca]);
 
     return (

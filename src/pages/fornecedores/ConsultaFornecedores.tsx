@@ -12,16 +12,16 @@ export const ConsultaFornecedores: React.FC = () => {
         return searchParams.get('busca') || '';    
     }, [searchParams]);
 
-    useEffect(() => {
-        ClientesServices.getAll(1, busca)
-            .then((result) => {
-                if (result instanceof Error) {
-                    alert(result.message)
-                } else {
-                    console.log(result);
-                }
-            });
-    }, [busca]);
+    // useEffect(() => {
+    //     ClientesServices.getAll(1, busca)
+    //         .then((result) => {
+    //             if (result instanceof Error) {
+    //                 alert(result.message)
+    //             } else {
+    //                 console.log(result);
+    //             }
+    //         });
+    // }, [busca]);
 
     return (
         <LayoutBase 
