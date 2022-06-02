@@ -1,0 +1,15 @@
+{
+    "clientes": [
+        {
+            "id": 1,
+            "nome": "RONALDINHO"
+        }
+    ],
+    "paises": [
+        {
+            "id": 1,
+            "pais": "BRASIL",
+            "sigla": "BRA"
+        }
+    ]
+}
