@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { Environment } from "../../../environment";
 import { Api } from "../axios-config";
 
@@ -33,7 +32,7 @@ type TListaClientes = {
     count: number;
 }
 
-const getAll = async (page = 1, filter = ''): Promise<any | Error> => {
+const getAll = async (page = 1, filter = ''): Promise<TListaClientes | Error> => {
     try {
 
         const urlRelativa = `/clientes?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nome_like=${filter}`;

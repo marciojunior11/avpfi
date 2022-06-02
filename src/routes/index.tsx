@@ -4,10 +4,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useDrawerContext } from "../shared/contexts";
 import { 
     Dashboard,
-    ConsultaPaises, 
-    ConsultaClientes,
+    ConsultaClientes, 
+    ConsultaPaises,
     ConsultaEstados,
-    ConsultaCidades,
+    ConsultaCidades
 } from "../pages";
 import { ConsultaFornecedores } from "../pages/fornecedores/ConsultaFornecedores";
 
@@ -21,11 +21,6 @@ export const AppRoutes = () => {
                 label: 'Página inicial',
                 icon: 'home',
                 path: '/home',
-            },
-                        {
-                label: 'Pessoas',
-                icon: 'people',
-                path: '/pessoas',
             },
             {
                 label: 'Clientes',
@@ -51,11 +46,6 @@ export const AppRoutes = () => {
                 label: 'Cidades',
                 icon: 'location_city',
                 path: '/cidades',
-            },
-            {
-                label: 'Teste',
-                icon: 'bug_report',
-                path: '/teste',
             },
         ]);
     }, []);
